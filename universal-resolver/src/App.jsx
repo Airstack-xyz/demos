@@ -1,20 +1,15 @@
-import { useQuery } from "@airstack/airstack-react";
+import { useLazyQuery } from "@airstack/airstack-react";
 import UNIVERSAL_RESOLVER from "./graphql/resolve";
 import UniversalResolver from "./components/UniversalResolver";
 
 function App() {
-  const { data } = useQuery(
+  const [resolveIdentity, { data }] = useLazyQuery(
     UNIVERSAL_RESOLVER,
-    {
-      contractAddress: "0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03",
-      blockchain: "ethereum",
-    },
+    {},
     { cache: false }
   );
 
-  console.log(data);
-
-  return <UniversalResolver />;
+  return <UniversalResolver data={data} onButtonClick={resolveIdentity} />;
 }
 
 export default App;
