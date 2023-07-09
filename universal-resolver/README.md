@@ -19,7 +19,7 @@ https://universal-resolver.vercel.app/
 Deploy the Universal Resolver app in one-click to either Vercel or Netlify:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Airstack-xyz/demos/tree/main/universal-resolver&project-name=universal-resolver&repository-name=universal-resolver&env=VITE_AIRSTACK_API_KEY)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Airstack-xyz/demos/tree/main/universal-resolver)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Airstack-xyz/demos&base=universal-resolver#VITE_AIRSTACK_API_KEY=xxx)
 
 ## Option #2: Clone Locally
 
