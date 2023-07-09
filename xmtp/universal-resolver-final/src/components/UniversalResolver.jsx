@@ -42,7 +42,6 @@ const UniversalResolver = ({ data, onButtonClick }) => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              console.log("Submitted");
               if (identity.length > 0) onButtonClick?.({ address: identity });
             }}
           >
