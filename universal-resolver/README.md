@@ -10,11 +10,19 @@ Web3 identities refer to:
 
 # Demo
 
+https://universal-resolver.vercel.app/
+
 # How to Use?
 
-## Option #1: One-click Deployment
+## Option #1: One-click Deploy
+
+Deploy the Universal Resolver app in one-click to either Vercel or Netlify:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Airstack-xyz/demos/tree/main/universal-resolver&project-name=universal-resolver&repository-name=universal-resolver&env=VITE_AIRSTACK_API_KEY)
 
 ## Option #2: Clone Locally
+
+Clone the demo app with the following commands:
 
 ```sh
 mkdir universal-resolver
@@ -29,4 +37,18 @@ rm -rf .git
 mv universal-resolver/* .
 mv universal-resolver/.* .
 rm -rf universal-resolver 
+```
+
+Rename [`.env.example`](.env.example) to `.env.local`:
+
+```bash
+cp .env.example .env.local
+```
+
+then, update `VITE_AIRSTACK_API_KEY` with your [Airstack](https://app.airstack.xyz/profile-settings/api-keys) API key.
+
+Run the Universal Resolver app in development mode:
+
+```bash
+npm run dev
 ```
