@@ -28,18 +28,18 @@ Deploy the Universal Resolver app in one click to either Vercel or Netlify:
 Clone the demo app with the following commands:
 
 ```sh
-mkdir universal-resolver-start
-cd universal-resolver-start
+mkdir universal-resolver-starter
+cd universal-resolver-starter
 git init
 git remote add -f origin https://github.com/Airstack-xyz/demos.git
 git config core.sparseCheckout true
 git sparse-checkout init
-git sparse-checkout set universal-resolver-start
+git sparse-checkout set universal-resolver-starter
 git pull origin main
 rm -rf .git
-mv xmtp/universal-resolver-start/* .
-mv xmtp/universal-resolver-start/.* .
-rm -rf xmtp/universal-resolver-start
+mv xmtp/universal-resolver-starter/* .
+mv xmtp/universal-resolver-starter/.* .
+rm -rf xmtp/universal-resolver-starter
 ```
 
 Rename [`.env.example`](.env.example) to `.env.local`:
