@@ -1,7 +1,7 @@
 import UniversalResolver from "./components/UniversalResolver";
 
 function App() {
-  return <UniversalResolver data={null} />;
+  return <UniversalResolver />;
 }
 
 export default App;

@@ -9,7 +9,7 @@ init(import.meta.env.VITE_AIRSTACK_API_KEY);
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#16161D",
+      main: "#DE5C5F",
     },
     mode: "dark",
   },
