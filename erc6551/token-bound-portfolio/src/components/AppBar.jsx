@@ -1,31 +1,31 @@
-import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
-const pages = ["Home", "Explorer", "Portfolio"];
+const pages = [
+  { name: "Home", link: "/" },
+  { name: "Explore", link: "/explore" },
+  { name: "Portfolio", link: "/portfolio" },
+];
 
 function ResponsiveAppBar() {
-  const [, setAnchorElNav] = React.useState(null);
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  const navigate = useNavigate();
 
   return (
     <AppBar position="absolute" color="transparent" elevation={0}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: "flex" }}>
-            {pages.map((page) => (
+            {pages.map(({ name, link }, index) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={index}
+                onClick={() => navigate(link)}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                {name}
               </Button>
             ))}
           </Box>
