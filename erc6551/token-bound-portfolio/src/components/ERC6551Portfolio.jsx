@@ -6,37 +6,43 @@ import ImageListItemBar from "@mui/material/ImageListItemBar";
 import CircularProgress from "@mui/material/CircularProgress";
 
 export default function StandardImageList({ data, loading }) {
+  const filteredData = data?.filter(({ address, tokenId, image }) =>
+    Boolean(address && tokenId && image)
+  );
   return (
     <Fragment>
       {loading ? (
         <CircularProgress sx={{ mt: 3 }} color="primary" />
       ) : (
-        <ImageList cols={3} gap={50} sx={{ p: 10 }}>
-          {data?.map(({ address, image, tokenId, symbol }, index) =>
-            address && tokenId && image ? (
-              <ImageListItem key={index}>
-                <img
-                  src={`${image}`}
-                  srcSet={`${image}`}
-                  alt={tokenId}
-                  loading="lazy"
-                  style={{ borderRadius: "20px", objectFit: "cover" }}
-                />
-                <ImageListItemBar
-                  title={symbol ?? "<UNKNOWN>"}
-                  subtitle={`#${tokenId}`}
-                  style={{
-                    borderBottomLeftRadius: "20px",
-                    borderBottomRightRadius: "20px",
-                  }}
-                />
-              </ImageListItem>
-            ) : (
-              <Fragment key={index} />
-            )
+        <Fragment>
+          {filteredData?.length > 0 && (
+            <ImageList cols={3} gap={50} sx={{ px: 10 }}>
+              {filteredData?.map(
+                ({ address, image, tokenId, symbol }, index) => (
+                  <ImageListItem key={index}>
+                    <img
+                      src={`${image}`}
+                      srcSet={`${image}`}
+                      alt={tokenId}
+                      loading="lazy"
+                      style={{ borderRadius: "20px", objectFit: "cover" }}
+                    />
+                    <ImageListItemBar
+                      title={symbol ?? "<UNKNOWN>"}
+                      subtitle={`#${tokenId}`}
+                      style={{
+                        borderBottomLeftRadius: "20px",
+                        borderBottomRightRadius: "20px",
+                      }}
+                    />
+                  </ImageListItem>
+                )
+              )}
+            </ImageList>
           )}
-        </ImageList>
+        </Fragment>
       )}
+      {filteredData?.length === 0 && "No ERC6551 Accounts Found"}
     </Fragment>
   );
 }

@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 const pages = [
   { name: "Home", link: "/" },
   { name: "Explore", link: "/explore" },
-  { name: "Portfolio", link: "/portfolio" },
 ];
 
 function ResponsiveAppBar() {

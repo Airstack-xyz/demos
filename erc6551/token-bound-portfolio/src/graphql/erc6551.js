@@ -19,11 +19,29 @@ query MyQuery($address: Identity!) {
 export const ERC6551_USER_BALANCE = `
 query MyQuery($address: Identity!) {
   Wallet(input: {identity: $address, blockchain: ethereum}) {
+    socials {
+      dappName
+      profileName
+    }
+    primaryDomain {
+      name
+    }
+    addresses
     tokenBalances {
       tokenNfts {
         erc6551Accounts {
           address {
             addresses
+          }
+        }
+        address
+        tokenId
+        token {
+          symbol
+        }
+        contentValue {
+          image {
+            original
           }
         }
       }
