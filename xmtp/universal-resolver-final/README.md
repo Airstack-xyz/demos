@@ -39,7 +39,7 @@ git pull origin main
 rm -rf .git
 mv xmtp/universal-resolver-final/* .
 mv xmtp/universal-resolver-final/.* .
-rm -rf xmtp/universal-resolver-final
+rm -rf xmtp
 ```
 
 Rename [`.env.example`](.env.example) to `.env.local`:
