@@ -2,9 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { init } from "@airstack/airstack-react";
 import { ThemeProvider, createTheme } from "@mui/material";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import App from "./App.jsx";
 
 init(import.meta.env.VITE_AIRSTACK_API_KEY);
+
+const client = new ApolloClient({
+  uri: "https://api.uat.airstack.xyz/gql",
+  cache: new InMemoryCache(),
+});
 
 const theme = createTheme({
   palette: {
@@ -17,8 +23,10 @@ const theme = createTheme({
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <ApolloProvider client={client}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </ApolloProvider>
   </React.StrictMode>
 );

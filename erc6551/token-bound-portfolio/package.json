@@ -11,11 +11,13 @@
   },
   "dependencies": {
     "@airstack/airstack-react": "^0.3.3",
+    "@apollo/client": "^3.7.17",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.13.7",
     "@mui/material": "^5.13.6",
     "@mui/styled-engine": "^5.13.2",
+    "graphql": "^16.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
