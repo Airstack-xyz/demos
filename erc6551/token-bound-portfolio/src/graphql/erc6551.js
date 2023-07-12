@@ -34,7 +34,6 @@ query MyQuery($address: Identity!) {
             addresses
           }
         }
-        address
         tokenId
         token {
           symbol

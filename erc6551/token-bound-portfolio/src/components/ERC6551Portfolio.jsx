@@ -4,22 +4,29 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import CircularProgress from "@mui/material/CircularProgress";
+import { useNavigate } from "react-router-dom";
 
 export default function StandardImageList({ data, loading }) {
+  const navigate = useNavigate();
   const filteredData = data?.filter(({ address, tokenId, image }) =>
     Boolean(address && tokenId && image)
   );
+
   return (
     <Fragment>
       {loading ? (
         <CircularProgress sx={{ mt: 3 }} color="primary" />
       ) : (
         <Fragment>
-          {filteredData?.length > 0 && (
+          {filteredData && filteredData?.length > 0 ? (
             <ImageList cols={3} gap={50} sx={{ px: 10 }}>
               {filteredData?.map(
                 ({ address, image, tokenId, symbol }, index) => (
-                  <ImageListItem key={index}>
+                  <ImageListItem
+                    key={index}
+                    onClick={() => navigate(`/portfolio/${address}`)}
+                    sx={{ cursor: "pointer" }}
+                  >
                     <img
                       src={`${image}`}
                       srcSet={`${image}`}
@@ -39,10 +46,11 @@ export default function StandardImageList({ data, loading }) {
                 )
               )}
             </ImageList>
+          ) : (
+            "No ERC6551 Accounts Found"
           )}
         </Fragment>
       )}
-      {filteredData?.length === 0 && "No ERC6551 Accounts Found"}
     </Fragment>
   );
 }

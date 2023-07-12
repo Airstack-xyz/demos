@@ -7,11 +7,13 @@ import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import StandardImageList from "../components/ERC6551Portfolio";
 import { ERC6551_USER_BALANCE } from "../graphql/erc6551";
+import { useParams } from "react-router-dom";
 
 const Portfolio = () => {
+  const { identity } = useParams();
   // Test out with 0xcf94ba8779848141d685d44452c975c2ddc04945
   const { data, loading } = useQuery(gql(ERC6551_USER_BALANCE), {
-    variables: { address: "0xcf94ba8779848141d685d44452c975c2ddc04945" },
+    variables: { address: identity },
   });
   const address = useMemo(
     () => data?.Wallet?.addresses?.[0],
@@ -20,9 +22,10 @@ const Portfolio = () => {
   const erc6551Data = useMemo(
     () =>
       data?.Wallet?.tokenBalances?.map(({ tokenNfts }) => {
-        const { address, tokenId, token, contentValue } = tokenNfts ?? {};
+        const { tokenId, token, contentValue, erc6551Accounts } =
+          tokenNfts ?? {};
         return {
-          address,
+          address: erc6551Accounts?.[0]?.address?.addresses?.[0],
           tokenId,
           image: contentValue?.image?.original,
           symbol: token?.symbol,
@@ -56,19 +59,23 @@ const Portfolio = () => {
         <Grid item xs={12}>
           <Avatar src={null} sx={{ width: 100, height: 100 }} />
         </Grid>
-        <Grid item xs={12}>
-          {address?.slice(0, 6)}...{address?.slice(-6)}
-        </Grid>
+        {address && (
+          <Grid item xs={12}>
+            {address?.slice(0, 10)}...{address?.slice(-10)}
+          </Grid>
+        )}
         {identitiesData?.filter?.(({ name }) => Boolean(name))?.length > 0 && (
           <Grid item xs={12}>
             <Stack direction="row" spacing={1}>
-              {identitiesData?.map(({ type, name }, index) => (
-                <Chip
-                  label={name}
-                  key={index}
-                  avatar={<Avatar src={`${type}.svg`} />}
-                />
-              ))}
+              {identitiesData
+                ?.filter?.(({ name }) => Boolean(name))
+                .map(({ type, name }, index) => (
+                  <Chip
+                    label={name}
+                    key={index}
+                    avatar={<Avatar src={`/${type}.svg`} />}
+                  />
+                ))}
             </Stack>
           </Grid>
         )}

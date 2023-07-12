@@ -30,7 +30,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="explore" element={<Explore />} />
-            <Route path="portfolio" element={<Portfolio />} />
+            <Route path="portfolio">
+              <Route path=":identity" element={<Portfolio />} />
+            </Route>
           </Routes>
         </Grid>
       </Box>
