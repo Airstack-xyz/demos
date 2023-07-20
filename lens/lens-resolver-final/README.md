@@ -11,7 +11,7 @@ Web3 identities refer to:
 
 # Demo
 
-https://universal-resolver.vercel.app/
+https://lens-resolver-final.vercel.app/
 
 # How to Use?
 
