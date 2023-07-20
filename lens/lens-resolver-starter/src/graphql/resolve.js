@@ -1,3 +1,3 @@
-const UNIVERSAL_RESOLVER = ``;
+const LENS_RESOLVER = ``;
 
-export default UNIVERSAL_RESOLVER;
+export default LENS_RESOLVER;

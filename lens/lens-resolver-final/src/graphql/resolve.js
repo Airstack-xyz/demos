@@ -1,4 +1,4 @@
-const UNIVERSAL_RESOLVER = `
+const LENS_RESOLVER = `
 query MyQuery($address: Identity!) {
   Wallet(input: {identity: $address, blockchain: ethereum}) {
     socials {
@@ -16,4 +16,4 @@ query MyQuery($address: Identity!) {
 }
 `;
 
-export default UNIVERSAL_RESOLVER;
+export default LENS_RESOLVER;
