@@ -16,6 +16,7 @@ function App() {
           flexGrow: 1,
           bgcolor: "#0E0E12",
           color: "white",
+          pt: "100px",
         }}
       >
         <Grid

@@ -12,10 +12,14 @@ const Explore = () => {
         tokenId: nft?.tokenId,
         image: nft?.contentValue?.image?.original,
         symbol: nft?.token?.symbol,
+        blockchain: nft?.blockchain,
+        isErc6551Exist: true,
+        name: nft?.token?.name,
+        type: nft?.token?.type,
       })),
     [data?.Accounts?.Account]
   );
-  console.log(data, erc6551Data);
+
   return (
     <div>
       <StandardImageList data={erc6551Data} loading={loading} />
