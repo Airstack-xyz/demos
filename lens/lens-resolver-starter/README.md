@@ -1,6 +1,6 @@
 # Lens Resolver
 
-This folder contains the final code for building a Lens resolver.
+This folder contains the starter code for building a Lens resolver.
 
 This demo demonstrates how to use Airstack APIs to resolve Lens profiles to other web3 identities.
 
@@ -19,16 +19,16 @@ https://universal-resolver.vercel.app/
 
 Deploy the Universal Resolver app in one click to either Vercel or Netlify:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Airstack-xyz/demos/tree/main/lens/lens-resolver-final&project-name=lens-resolver-final&repository-name=lens-resolver-final&env=VITE_AIRSTACK_API_KEY)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Airstack-xyz/demos&base=lens/lens-resolver-final#VITE_AIRSTACK_API_KEY=xxx)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Airstack-xyz/demos/tree/main/lens/lens-resolver-starter&project-name=lens-resolver-starter&repository-name=lens-resolver-starter&env=VITE_AIRSTACK_API_KEY)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Airstack-xyz/demos&base=lens/lens-resolver-starter#VITE_AIRSTACK_API_KEY=xxx)
 
 ## Option #2: Clone Locally
 
 Clone the demo app with the following commands:
 
 ```sh
-mkdir lens-resolver-final
-cd lens-resolver-final
+mkdir lens-resolver-starter
+cd lens-resolver-starter
 git init
 git remote add -f origin https://github.com/Airstack-xyz/demos.git
 git config core.sparseCheckout true
@@ -36,8 +36,8 @@ git sparse-checkout init
 git sparse-checkout set lens-resolver
 git pull origin main
 rm -rf .git
-mv lens/lens-resolver-final/* .
-mv lens/lens-resolver-final/.* .
+mv lens/lens-resolver-starter/* .
+mv lens/lens-resolver-starter/.* .
 rm -rf lens
 ```
 
