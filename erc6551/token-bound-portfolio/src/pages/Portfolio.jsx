@@ -1,6 +1,6 @@
 /* eslint-disable no-unsafe-optional-chaining */
 import { useMemo } from "react";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@airstack/airstack-react";
 import Avatar from "@mui/material/Avatar";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
@@ -12,8 +12,8 @@ import { useParams } from "react-router-dom";
 const Portfolio = () => {
   const { identity } = useParams();
   // Test out with 0xcf94ba8779848141d685d44452c975c2ddc04945
-  const { data, loading } = useQuery(gql(ERC6551_USER_BALANCE), {
-    variables: { address: identity },
+  const { data, loading } = useQuery(ERC6551_USER_BALANCE, {
+    address: identity,
   });
   const address = useMemo(
     () => data?.Wallet?.addresses?.[0],
@@ -21,31 +21,32 @@ const Portfolio = () => {
   );
   const erc6551Data = useMemo(
     () =>
-      data?.Wallet?.tokenBalances?.map(({ tokenNfts }) => {
-        const { tokenId, token, contentValue, erc6551Accounts } =
-          tokenNfts ?? {};
-        return {
-          address: erc6551Accounts?.[0]?.address?.addresses?.[0],
-          tokenId,
-          image: contentValue?.image?.original,
-          symbol: token?.symbol,
-        };
-      }),
-    [data?.Wallet?.tokenBalances]
+      data?.TokenBalances?.TokenBalance?.map(
+        ({ tokenNfts, token, tokenId }) => {
+          const { contentValue, erc6551Accounts } = tokenNfts ?? {};
+          return {
+            address: erc6551Accounts?.[0]?.address?.addresses?.[0],
+            tokenId,
+            image: contentValue?.image?.original,
+            symbol: token?.symbol,
+          };
+        }
+      ),
+    [data?.TokenBalances?.TokenBalance]
   );
-  const identitiesData = useMemo(() => {
-    const { socials, primaryDomain } = data?.Wallet ?? {};
-    return [
-      {
-        type: "ens",
-        name: primaryDomain?.name,
-      },
-      ...(socials ?? [])?.map(({ dappName, profileName }) => ({
-        type: dappName,
-        name: profileName,
-      })),
-    ];
-  }, [data?.Wallet]);
+  // const identitiesData = useMemo(() => {
+  //   const { socials, primaryDomain } = data?.Wallet ?? {};
+  //   return [
+  //     {
+  //       type: "ens",
+  //       name: primaryDomain?.name,
+  //     },
+  //     ...(socials ?? [])?.map(({ dappName, profileName }) => ({
+  //       type: dappName,
+  //       name: profileName,
+  //     })),
+  //   ];
+  // }, [data?.Wallet]);
 
   return (
     <>
@@ -64,7 +65,7 @@ const Portfolio = () => {
             {address?.slice(0, 10)}...{address?.slice(-10)}
           </Grid>
         )}
-        {identitiesData?.filter?.(({ name }) => Boolean(name))?.length > 0 && (
+        {/* {identitiesData?.filter?.(({ name }) => Boolean(name))?.length > 0 && (
           <Grid item xs={12}>
             <Stack direction="row" spacing={1}>
               {identitiesData
@@ -78,7 +79,7 @@ const Portfolio = () => {
                 ))}
             </Stack>
           </Grid>
-        )}
+        )} */}
         <Grid item xs={12}>
           <StandardImageList data={erc6551Data} loading={loading} />
         </Grid>

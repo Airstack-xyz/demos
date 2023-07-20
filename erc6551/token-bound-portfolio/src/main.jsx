@@ -9,7 +9,7 @@ import App from "./App.jsx";
 init(import.meta.env.VITE_AIRSTACK_API_KEY);
 
 const client = new ApolloClient({
-  uri: "https://api.uat.airstack.xyz/gql",
+  uri: "https://api.airstack.xyz/gql",
   cache: new InMemoryCache(),
 });
 

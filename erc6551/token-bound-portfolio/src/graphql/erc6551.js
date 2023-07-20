@@ -18,31 +18,42 @@ query MyQuery($address: Identity!) {
 
 export const ERC6551_USER_BALANCE = `
 query MyQuery($address: Identity!) {
-  Wallet(input: {identity: $address, blockchain: ethereum}) {
-    socials {
-      dappName
-      profileName
-    }
-    primaryDomain {
-      name
-    }
-    addresses
-    tokenBalances {
+  TokenBalances(
+    input: {filter: {owner: {_eq: $address}, tokenType: {_in: [ERC1155, ERC721]}}, blockchain: ethereum, limit: 200}
+  ) {
+    TokenBalance {
       tokenNfts {
         erc6551Accounts {
           address {
             addresses
+            tokenBalances {
+              tokenNfts {
+                address
+                contentValue {
+                  image {
+                    original
+                  }
+                }
+                type
+              }
+            }
+            socials {
+              dappName
+              profileName
+              identity
+            }
           }
-        }
-        tokenId
-        token {
-          symbol
+          tokenId
         }
         contentValue {
           image {
             original
           }
         }
+      }
+      tokenId
+      token {
+        symbol
       }
     }
   }
@@ -57,12 +68,14 @@ query MyQuery {
     Account {
       nft {
         address
-        metaData {
-          image
-        }
         tokenId
         token {
           symbol
+        }
+        contentValue {
+          image {
+            original
+          }
         }
       }
     }
