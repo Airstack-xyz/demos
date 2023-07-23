@@ -9,6 +9,8 @@ function App() {
     { cache: false }
   );
 
+  console.log(data);
+
   return (
     <UniversalResolver
       data={data}

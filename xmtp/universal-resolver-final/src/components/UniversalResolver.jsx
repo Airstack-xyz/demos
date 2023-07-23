@@ -220,6 +220,34 @@ const UniversalResolver = ({ data, loading, onButtonClick }) => {
                       )}
                     </>
                   )}
+                  {data?.Wallet?.xmtp?.[0]?.isXMTPEnabled && (
+                    <ListItem divider>
+                      <Grid container alignItems="center">
+                        <Grid item xs={7}>
+                          <Grid container direction="row" alignItems="center">
+                            <Grid item>
+                              <ListItemAvatar>
+                                <Avatar src="/xmtp.jpeg" alt="XMTP logo" />
+                              </ListItemAvatar>
+                            </Grid>
+                            <Grid item>
+                              <ListItemText primary="XMTP" />
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                        <Grid item xs={5}>
+                          <ListItemText
+                            sx={{ color: "#96999C" }}
+                            primary={
+                              data?.Wallet?.xmtp?.[0].isXMTPEnabled
+                                ? "Enabled"
+                                : "Disabled"
+                            }
+                          />
+                        </Grid>
+                      </Grid>
+                    </ListItem>
+                  )}
                 </List>
               </Grid>
             )}

@@ -12,6 +12,9 @@ query MyQuery($address: Identity!) {
       name
     }
     addresses
+    xmtp {
+      isXMTPEnabled
+    }	
   }
 }
 `;
