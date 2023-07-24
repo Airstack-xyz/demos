@@ -7,11 +7,11 @@ This demo demonstrates how to use Airstack APIs to resolve Farcaster names or ID
 Web3 identities refer to:
 - 0x address
 - [ENS](https://ens.domains/)
-- [Farcaster](https://farcaster.xyz) Name & ID
+- [Lens](https://www.lens.xyz/) Profiles
 
 # Demo
 
-https://lens-resolver-final.vercel.app/
+https://farcaster-resolver.vercel.app/
 
 # How to Use?
 
