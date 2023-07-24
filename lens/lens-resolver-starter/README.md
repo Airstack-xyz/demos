@@ -17,7 +17,7 @@ https://lens-resolver-final.vercel.app/
 
 ## Option #1: One-click Deploy
 
-Deploy the Universal Resolver app in one click to either Vercel or Netlify:
+Deploy the Lens Resolver app in one click to either Vercel or Netlify:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Airstack-xyz/demos/tree/main/lens/lens-resolver-starter&project-name=lens-resolver-starter&repository-name=lens-resolver-starter&env=VITE_AIRSTACK_API_KEY)
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Airstack-xyz/demos&base=lens/lens-resolver-starter#VITE_AIRSTACK_API_KEY=xxx)
