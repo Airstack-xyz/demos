@@ -1,4 +1,4 @@
-const LENS_RESOLVER = `
+const FARCASTER_RESOLVER = `
 query MyQuery($address: Identity!) {
   Wallet(input: {identity: $address, blockchain: ethereum}) {
     socials {
@@ -16,4 +16,4 @@ query MyQuery($address: Identity!) {
 }
 `;
 
-export default LENS_RESOLVER;
+export default FARCASTER_RESOLVER;

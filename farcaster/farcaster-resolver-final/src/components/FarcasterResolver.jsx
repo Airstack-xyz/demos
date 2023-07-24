@@ -3,7 +3,6 @@ import { Fragment, useState } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -11,9 +10,22 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
+import MenuItem from "@mui/material/MenuItem";
 
-const LensResolver = ({ data, loading, onButtonClick }) => {
+const mode = [
+  {
+    value: "fc_fname",
+    label: "Name",
+  },
+  {
+    value: "fc_fid",
+    label: "ID",
+  },
+];
+
+const FarcasterResolver = ({ data, loading, onButtonClick }) => {
   const [identity, setIdentity] = useState("");
+  const [farcasterMode, setFarcasterMode] = useState("fc_fname");
 
   return (
     <Box
@@ -45,10 +57,7 @@ const LensResolver = ({ data, loading, onButtonClick }) => {
               e.preventDefault();
               if (identity.length > 0)
                 onButtonClick?.({
-                  address:
-                    identity?.slice(-5) === ".lens"
-                      ? identity
-                      : `${identity}.lens`,
+                  address: `${farcasterMode}:${identity}`,
                 });
             }}
           >
@@ -56,33 +65,39 @@ const LensResolver = ({ data, loading, onButtonClick }) => {
               id="outlined-basic"
               hiddenLabel
               variant="outlined"
-              placeholder="e.g. stani or stani.lens"
+              placeholder="e.g. vtbuterin or 123"
               sx={{ mt: "3rem", height: "50.27px", width: "645px" }}
               value={identity}
               onChange={(e) => setIdentity(e.target.value)}
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">
-                    <Box>Lens Profile</Box>
-                  </InputAdornment>
+                  <TextField
+                    id="outlined-select-currency"
+                    select
+                    size="small"
+                    value={farcasterMode}
+                    sx={{ mr: 3, width: "150px" }}
+                    onChange={(e) => setFarcasterMode(e.target.value)}
+                  >
+                    {mode.map((option) => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </TextField>
                 ),
                 endAdornment: (
-                  <>
-                    <InputAdornment position="end" sx={{ mr: 3 }}>
-                      .lens
-                    </InputAdornment>
-                    <Button
-                      variant="contained"
-                      type="submit"
-                      sx={{
-                        height: "35px",
-                        borderRadius: "6px",
-                        background: "#DE5C5F",
-                      }}
-                    >
-                      Go
-                    </Button>
-                  </>
+                  <Button
+                    variant="contained"
+                    type="submit"
+                    sx={{
+                      height: "35px",
+                      borderRadius: "6px",
+                      background: "#DE5C5F",
+                    }}
+                  >
+                    Go
+                  </Button>
                 ),
               }}
             />
@@ -241,4 +256,4 @@ const LensResolver = ({ data, loading, onButtonClick }) => {
   );
 };
 
-export default LensResolver;
+export default FarcasterResolver;

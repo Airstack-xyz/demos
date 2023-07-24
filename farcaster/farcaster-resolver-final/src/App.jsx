@@ -1,16 +1,16 @@
 import { useLazyQuery } from "@airstack/airstack-react";
-import LENS_RESOLVER from "./graphql/resolve";
-import LensResolver from "./components/LensResolver";
+import FARCASTER_RESOLVER from "./graphql/resolve";
+import FarcasterResolver from "./components/FarcasterResolver";
 
 function App() {
   const [resolveIdentity, { data, loading }] = useLazyQuery(
-    LENS_RESOLVER,
+    FARCASTER_RESOLVER,
     {},
     { cache: false }
   );
 
   return (
-    <LensResolver
+    <FarcasterResolver
       data={data}
       loading={loading}
       onButtonClick={resolveIdentity}
