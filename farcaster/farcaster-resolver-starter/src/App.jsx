@@ -1,7 +1,7 @@
-import LensResolver from "./components/LensResolver";
+import FarcasterResolver from "./components/FarcasterResolver";
 
 function App() {
-  return <LensResolver />;
+  return <FarcasterResolver />;
 }
 
 export default App;

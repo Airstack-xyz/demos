@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom/client.js";
+import ReactDOM from "react-dom/client";
 import { init } from "@airstack/airstack-react";
 import { ThemeProvider, createTheme } from "@mui/material";
 import App from "./App.jsx";

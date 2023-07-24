@@ -1,3 +1,3 @@
-const LENS_RESOLVER = ``;
+const FARCASTER_RESOLVER = ``;
 
-export default LENS_RESOLVER;
+export default FARCASTER_RESOLVER;
