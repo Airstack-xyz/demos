@@ -65,7 +65,7 @@ const FarcasterResolver = ({ data, loading, onButtonClick }) => {
               id="outlined-basic"
               hiddenLabel
               variant="outlined"
-              placeholder="e.g. vtbuterin or 123"
+              placeholder="e.g. vbuterin or 123"
               sx={{ mt: "3rem", height: "50.27px", width: "645px" }}
               value={identity}
               onChange={(e) => setIdentity(e.target.value)}
