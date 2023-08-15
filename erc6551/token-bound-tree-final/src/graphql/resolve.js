@@ -1,0 +1,3 @@
+const UNIVERSAL_RESOLVER = ``;
+
+export default UNIVERSAL_RESOLVER;
